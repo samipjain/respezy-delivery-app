@@ -1,27 +1,37 @@
 # RespezyDeliveryApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.
+The application has been developed using Bootstrap and Angular v9 framework. Name of the retail company is Respezy
 
-## Development server
+Assuming Angular CLI (v 9.1.8) is installed in your computer.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Below are the steps to run this application. Open terminal and exceute the following commands -
 
-## Code scaffolding
+```
+git clone https://github.com/samipjain/respezy-delivery-app.git
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+cd respezy-delivery-app
 
-## Build
+npm install && npm start
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+This will start the application on your default browser. If happen otherwise, navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. Make sure your server is running.
 
-## Running unit tests
+# Folder structure
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Within the `src/app` folder, there are 2 main files/folders - `components` and `services`.
 
-## Running end-to-end tests
+```
+src/app
+    - services
+        - get-order
+        - get-delivery-quote
+        - delivery-request
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+The `services` folder connects the real data to components by fetching data backend server. HTML and Typescript logic are in app.component.html and app.component.ts
 
-## Further help
+For Future Work - 
+- Delivery Request can be displayed in a table format for better visibility and keep track of all deliveries
+- More Form checking can be implemented to make it a robust system
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Please email `samip@mit.edu` for any queries/comments.
