@@ -29,6 +29,4 @@ export class AppComponent {
       this.deliveryQuote = this.getDeliveryQuoteService.getDeliveryQuote(dropoff_address, pickup_address);
     }
   }
-
-
 }
