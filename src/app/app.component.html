@@ -21,10 +21,10 @@
       </div>
     </div>
     <div class="col-md-4">
-      <button type="button" class="btn btn-secondary">Request Delivery</button>
+      <button type="button" class="btn btn-secondary" (click)="requestDelivery()">Request Delivery</button>
       <div class="card" style="margin-top:1em">
         <div class="card-body">
-          Print delivery request result
+          <pre>{{deliveryRequestResult | json}}</pre>
         </div>
       </div>
     </div>

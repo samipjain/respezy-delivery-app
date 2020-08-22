@@ -22,11 +22,13 @@ export class GetOrderService {
     "contents": [
       {
         "name": "Zebra Socks",
-        "quantity": 2
+        "quantity": 2,
+        "size": "large"
       },
       {
         "name": "Leopard Socks",
-        "quantity": 10
+        "quantity": 10,
+        "size": "large"
       }
     ]
   }

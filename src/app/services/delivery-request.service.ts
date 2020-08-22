@@ -4,13 +4,13 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class GetDeliveryQuoteService {
+export class DeliveryRequestService {
 
   constructor(private http: HttpClient) { }
 
-  quoteUrl = 'http://localhost:3000/quote';
+  quoteUrl = 'http://localhost:3000/delivery_request';
 
-  getDeliveryQuote(params): any {
+  makeDelieryRequest(params): any {
     return this.http.post(this.quoteUrl, params);
   }
 }
