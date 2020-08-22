@@ -3,9 +3,80 @@
     <a class="navbar-brand" href="#">{{title}}</a>
   </nav>
 
+  <div class="form-group" style="margin:3em">
+    <form #orderForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Pickup Name</label>
+            <input type="text" class="form-control" name="pickup_name" [(ngModel)]="order.pickup.name" required />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Pickup Address</label>
+            <input type="text" class="form-control" name="pickup_address" [(ngModel)]="order.pickup.address" required />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Pickup Phone Number</label>
+            <input type="text" class="form-control" name="pickup_phone_number" [(ngModel)]="order.pickup.phone_number" required />
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Dropoff Name</label>
+            <input type="text" class="form-control" name="dropoff_name" [(ngModel)]="order.dropoff.name" required />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Dropoff Address</label>
+            <input type="text" class="form-control" name="dropoff_address" [(ngModel)]="order.dropoff.address" required/>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Dropoff Phone Number</label>
+            <input type="text" class="form-control" name="dropoff_phone_number" [(ngModel)]="order.dropoff.phone_number" required/>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Name <small>(For multiple items add comma separated values)</small></label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="manifest_items.name" required />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Quantity <small>(For multiple items add comma separated values)</small></label>
+            <input type="text" class="form-control" name="quantity" [(ngModel)]="manifest_items.quantity" required />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Size <small>(For multiple items add comma separated values)</small></label>
+            <input type="text" class="form-control" name="size" [(ngModel)]="manifest_items.size" required />
+            <small id="emailHelp" class="form-text text-muted">Accepted values: small, medium, large, xlarge</small>
+          </div>
+        </div>
+      </div>
+      
+      <input type="submit" class="btn btn-primary" value="Place an Order" />
+      
+    </form>
+  </div>
+
   <div class="row" style="margin:3em">
     <div class="col-md-4">
-      <button type="button" class="btn btn-secondary" (click)="getOrder()">Get an order</button>
+      <button type="button" class="btn btn-secondary" (click)="getOrder()">Get sample order (Pre-fill)</button>
       <div class="card" style="margin-top:1em">
         <div class="card-body">
           <pre>{{order | json}}</pre>

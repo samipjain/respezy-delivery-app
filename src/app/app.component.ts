@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { GetOrderService } from './services/get-order.service';
 import { GetDeliveryQuoteService } from './services/get-delivery-quote.service';
 import { DeliveryRequestService } from './services/delivery-request.service';
-import { Order } from './models/order';
 
 @Component({
   selector: 'app-root',
@@ -14,23 +13,62 @@ export class AppComponent {
 
   constructor(private getOrderService: GetOrderService, private getDeliveryQuoteService: GetDeliveryQuoteService, private deliveryRequestService: DeliveryRequestService) {}
 
-  order: Order
+  order = {
+    uuid: '',
+    pickup: {
+        name: '',
+        address: '',
+        phone_number: '',
+    },
+    dropoff: {
+        name: '',
+        address: '',
+        phone_number: '',
+    },
+    contents: [
+        {
+            name: '',
+            quantity: '',
+            size: ''
+        }
+    ]
+  }
+  manifest_items = {
+    name: '',
+    quantity: '',
+    size: ''
+  }
   deliveryQuote: any;
   deliveryRequestResult: any;
+
+  onSubmit(): void {
+    let nameArr = this.manifest_items.name.split(',');
+    let quantityArr = this.manifest_items.quantity.split(',');
+    let sizeArr = this.manifest_items.size.split(',');
+    let len_manifest_itmes = nameArr.length;
+
+    let manifest_items_arr = []
+
+    for (let i = 0; i < len_manifest_itmes; i++) {
+      manifest_items_arr.push({name: nameArr[i].trim(), quantity: parseInt(quantityArr[i]), size: sizeArr[i].trim()})  
+    }
+
+    this.order.contents = manifest_items_arr;
+  }
 
   getOrder(): void {
     this.order = this.getOrderService.getOrder();
   }
 
   getDeliveryQuote(): void {
-    if (this.order !== undefined) {
+    if (this.order.pickup.name !== '' && this.order.dropoff.name !== '') {
       let params = {dropoff_address: this.order.dropoff.address, pickup_address: this.order.pickup.address};
 
       this.getDeliveryQuoteService.getDeliveryQuote(params).subscribe(data => {
         this.deliveryQuote = data;
       });
     } else {
-      this.deliveryQuote = {error: "Please click 'Get an Order' button first"};
+      this.deliveryQuote = {error: "Please fill out the order form"};
     }
   }
 
