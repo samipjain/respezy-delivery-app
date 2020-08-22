@@ -23,10 +23,11 @@ export class AppComponent {
 
   getDeliveryQuote(): void {
     if (Object.keys(this.order)) {
-      let dropoff_address = this.order.dropoff.address;
-      let pickup_address = this.order.pickup.address;
+      let params = {dropoff_address: this.order.dropoff.address, pickup_address: this.order.pickup.address};
 
-      this.deliveryQuote = this.getDeliveryQuoteService.getDeliveryQuote(dropoff_address, pickup_address);
+      this.getDeliveryQuoteService.getDeliveryQuote(params).subscribe(data => {
+        this.deliveryQuote = data;
+      });
     }
   }
 }

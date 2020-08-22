@@ -1,25 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetDeliveryQuoteService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getDeliveryQuote(dropOff_address: string, pickup_address: string): any {
-    // Call HTTP Post
-    return {
-      "kind": "delivery_quote",
-      "id": "dqt_zoFAXwMCNhpS8w",
-      "created": "2020-08-22T02:24:14Z",
-      "expires": "2020-08-22T02:29:14Z",
-      "fee": 600,
-      "currency": "USD",
-      "currency_type": "USD",
-      "dropoff_eta": "2020-08-22T02:59:14Z",
-      "duration": 35,
-      "pickup_duration": 6
-  }
+  quoteUrl = 'http://localhost:3000/quote';
+
+  getDeliveryQuote(params): any {
+    return this.http.post(this.quoteUrl, params);
   }
 }
