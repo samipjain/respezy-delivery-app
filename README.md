@@ -26,6 +26,8 @@ src/app
         - get-order
         - get-delivery-quote
         - delivery-request
+    - app.component.html
+    - app.component.ts
 ```
 
 The `services` folder connects the real data to components by fetching data backend server. HTML and Typescript logic are in app.component.html and app.component.ts
