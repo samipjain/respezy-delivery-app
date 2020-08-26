@@ -32,6 +32,6 @@ The `services` folder connects the real data to components by fetching data back
 
 For Future Work - 
 - Delivery Request can be displayed in a table format for better visibility and keep track of all deliveries
-- More Form checking can be implemented to make it a robust system
+- Error handling can be incorporated to increase robustness of the system
 
 Please email `samip@mit.edu` for any queries/comments.
